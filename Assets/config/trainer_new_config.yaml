@@ -1,0 +1,885 @@
+behaviors:
+  FoodCollector:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 1024
+      buffer_size: 10240
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: false
+      hidden_units: 128
+      num_layers: 2
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 2000000
+    time_horizon: 64
+    summary_freq: 10000
+    threaded: false
+  Bouncer:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 1024
+      buffer_size: 10240
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: true
+      hidden_units: 64
+      num_layers: 2
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 4000000
+    time_horizon: 64
+    summary_freq: 10000
+    threaded: false
+  PushBlock:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 128
+      buffer_size: 2048
+      learning_rate: 0.0003
+      beta: 0.01
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: false
+      hidden_units: 256
+      num_layers: 2
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 2000000
+    time_horizon: 64
+    summary_freq: 60000
+    threaded: false
+  SmallWallJump:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 128
+      buffer_size: 2048
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: false
+      hidden_units: 256
+      num_layers: 2
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 5000000
+    time_horizon: 128
+    summary_freq: 20000
+    threaded: false
+  BigWallJump:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 128
+      buffer_size: 2048
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: false
+      hidden_units: 256
+      num_layers: 2
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 20000000
+    time_horizon: 128
+    summary_freq: 20000
+    threaded: false
+  Pyramids:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 128
+      buffer_size: 2048
+      learning_rate: 0.0003
+      beta: 0.01
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: false
+      hidden_units: 512
+      num_layers: 2
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+      curiosity:
+        gamma: 0.99
+        strength: 0.02
+        network_settings:
+          normalize: false
+          hidden_units: 256
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+        learning_rate: 0.0003
+        encoding_size: 256
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 10000000
+    time_horizon: 128
+    summary_freq: 30000
+    threaded: false
+  VisualPyramids:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 64
+      buffer_size: 2024
+      learning_rate: 0.0003
+      beta: 0.01
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: false
+      hidden_units: 256
+      num_layers: 1
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+      curiosity:
+        gamma: 0.99
+        strength: 0.01
+        network_settings:
+          normalize: false
+          hidden_units: 256
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+        learning_rate: 0.0003
+        encoding_size: 256
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 10000000
+    time_horizon: 128
+    summary_freq: 10000
+    threaded: false
+  3DBall:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 64
+      buffer_size: 12000
+      learning_rate: 0.0003
+      beta: 0.001
+      epsilon: 0.2
+      lambd: 0.99
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: true
+      hidden_units: 128
+      num_layers: 2
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 500000
+    time_horizon: 1000
+    summary_freq: 12000
+    threaded: false
+  3DBallHard:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 1200
+      buffer_size: 12000
+      learning_rate: 0.0003
+      beta: 0.001
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: true
+      hidden_units: 128
+      num_layers: 2
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.995
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 5000000
+    time_horizon: 1000
+    summary_freq: 12000
+    threaded: false
+  Tennis:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 1024
+      buffer_size: 10240
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: constant
+    network_settings:
+      normalize: true
+      hidden_units: 256
+      num_layers: 2
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 50000000
+    time_horizon: 1000
+    summary_freq: 10000
+    threaded: false
+    self_play:
+      save_steps: 50000
+      team_change: 100000
+      swap_steps: 50000
+      window: 10
+      play_against_latest_model_ratio: 0.5
+      initial_elo: 1200.0
+  Goalie:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 2048
+      buffer_size: 20480
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: constant
+    network_settings:
+      normalize: false
+      hidden_units: 512
+      num_layers: 2
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 50000000
+    time_horizon: 1000
+    summary_freq: 10000
+    threaded: false
+    self_play:
+      save_steps: 50000
+      team_change: 200000
+      swap_steps: 25000
+      window: 10
+      play_against_latest_model_ratio: 0.5
+      initial_elo: 1200.0
+  Striker:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 2048
+      buffer_size: 20480
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: constant
+    network_settings:
+      normalize: false
+      hidden_units: 512
+      num_layers: 2
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 50000000
+    time_horizon: 1000
+    summary_freq: 10000
+    threaded: false
+    self_play:
+      save_steps: 50000
+      team_change: 200000
+      swap_steps: 100000
+      window: 10
+      play_against_latest_model_ratio: 0.5
+      initial_elo: 1200.0
+  SoccerTwos:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 2048
+      buffer_size: 20480
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: constant
+    network_settings:
+      normalize: false
+      hidden_units: 512
+      num_layers: 2
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 50000000
+    time_horizon: 1000
+    summary_freq: 10000
+    threaded: false
+    self_play:
+      save_steps: 50000
+      team_change: 200000
+      swap_steps: 50000
+      window: 10
+      play_against_latest_model_ratio: 0.5
+      initial_elo: 1200.0
+  CrawlerStatic:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 2024
+      buffer_size: 20240
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: true
+      hidden_units: 512
+      num_layers: 3
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.995
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 10000000
+    time_horizon: 1000
+    summary_freq: 30000
+    threaded: false
+  CrawlerDynamic:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 2024
+      buffer_size: 20240
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: true
+      hidden_units: 512
+      num_layers: 3
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.995
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 10000000
+    time_horizon: 1000
+    summary_freq: 30000
+    threaded: false
+  WormDynamic:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 2024
+      buffer_size: 20240
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: true
+      hidden_units: 512
+      num_layers: 3
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.995
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 3500000
+    time_horizon: 1000
+    summary_freq: 30000
+    threaded: false
+  WormStatic:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 2024
+      buffer_size: 20240
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: true
+      hidden_units: 512
+      num_layers: 3
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.995
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 3500000
+    time_horizon: 1000
+    summary_freq: 30000
+    threaded: false
+  Walker:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 2048
+      buffer_size: 20480
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: true
+      hidden_units: 512
+      num_layers: 3
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.995
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 20000000
+    time_horizon: 1000
+    summary_freq: 30000
+    threaded: false
+  Reacher:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 2024
+      buffer_size: 20240
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: true
+      hidden_units: 128
+      num_layers: 2
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.995
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 20000000
+    time_horizon: 1000
+    summary_freq: 60000
+    threaded: false
+  Hallway:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 128
+      buffer_size: 1024
+      learning_rate: 0.0003
+      beta: 0.01
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: false
+      hidden_units: 128
+      num_layers: 2
+      vis_encode_type: simple
+      memory:
+        sequence_length: 64
+        memory_size: 128
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 10000000
+    time_horizon: 64
+    summary_freq: 10000
+    threaded: false
+  VisualHallway:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 64
+      buffer_size: 1024
+      learning_rate: 0.0003
+      beta: 0.01
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: false
+      hidden_units: 128
+      num_layers: 1
+      vis_encode_type: simple
+      memory:
+        sequence_length: 64
+        memory_size: 128
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 10000000
+    time_horizon: 64
+    summary_freq: 10000
+    threaded: false
+  VisualPushBlock:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 64
+      buffer_size: 1024
+      learning_rate: 0.0003
+      beta: 0.01
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: false
+      hidden_units: 128
+      num_layers: 1
+      vis_encode_type: simple
+      memory:
+        sequence_length: 32
+        memory_size: 128
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 3000000
+    time_horizon: 64
+    summary_freq: 60000
+    threaded: false
+  GridWorld:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 32
+      buffer_size: 256
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: false
+      hidden_units: 256
+      num_layers: 1
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.9
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 500000
+    time_horizon: 5
+    summary_freq: 20000
+    threaded: false
+Bird:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 32
+      buffer_size: 256
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: false
+      hidden_units: 20
+      num_layers: 1
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.9
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 500000
+    time_horizon: 3
+    summary_freq: 2000
+    threaded: false
+  Basic:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 32
+      buffer_size: 256
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: false
+      hidden_units: 20
+      num_layers: 1
+      vis_encode_type: simple
+      goal_conditioning_type: hyper
+    reward_signals:
+      extrinsic:
+        gamma: 0.9
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          goal_conditioning_type: hyper
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 500000
+    time_horizon: 3
+    summary_freq: 2000
+    threaded: false

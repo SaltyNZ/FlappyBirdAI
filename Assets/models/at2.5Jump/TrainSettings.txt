@@ -1,0 +1,4 @@
+JumpForce: 2.5
+Rays Per Direction: 8
+Max Ray Degrees: 90
+Sphere Cast: 0.25
